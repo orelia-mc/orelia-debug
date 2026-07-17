@@ -1,4 +1,6 @@
-# OreliaDebug
+<img src="https://orelia-mc.github.io/assets/logo_wide.jpg" />
+<h1 align="center">Orelia Debug</h1>
+<p align="center">Debug plugin for Orellia-MC plugins</p>
 
 Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）のテストプレイを助けるための管理者向けデバッグツールです。本番サーバーへの導入は必須ではなく、開発・検証環境にのみ導入することを想定しています。
 
