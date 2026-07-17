@@ -1,0 +1,59 @@
+# Centralized user-facing text for orelia-debug's /oladmin debug tooling. Every chat
+# message goes through rpg.core.message.MessageManager (reused from orelia-core) - do not
+# hardcode ChatColor + literal strings in command code, add a key here instead.
+
+prefix: "&8[&6OreliaDebug&8] &r"
+
+command:
+  player-only: "&cプレイヤーのみ実行できます。"
+  player-not-found: "&c対象のプレイヤーが見つかりません: {player}"
+
+usage:
+  root: "&e使い方: /oladmin debug <gui|money|config|confighelp|quest|npc|exp|manual> ..."
+  gui: "&e使い方: /oladmin debug gui <status|equipment|skill|job|shop|warehouse|auction|mail|ranking> <player>"
+  money: "&e使い方: /oladmin debug money <give|set|take> <player> <amount>"
+  config: "&e使い方: /oladmin debug config <core|world|extra> <list|get <file> <path>|set <file> <path> <value>|save <file>>"
+  confighelp: "&e使い方: /oladmin debug confighelp <core|world|extra> <file>"
+  quest: "&e使い方: /oladmin debug quest complete <player> <questId>"
+  exp: "&e使い方: /oladmin debug exp give <player> <amount>"
+
+gui:
+  opened: "&a{player}に{screen}画面を表示しました。"
+  unsupported: "&c指定した画面は対応していません: {screen}"
+  extra-not-installed: "&cOreliaExtraが導入されていないため使用できません。"
+  world-not-installed: "&cOreliaWorldが導入されていないため使用できません。"
+
+money:
+  invalid-amount: "&c金額は数値で指定してください。"
+  given: "&a{player}に{amount}を付与しました。（残高: {balance}）"
+  set: "&a{player}の所持金を{amount}に設定しました。"
+  taken: "&a{player}から{amount}を引き出しました。（残高: {balance}）"
+  take-failed: "&c残高が不足しているため引き出せませんでした。"
+
+config:
+  unknown-target: "&c不明な対象です: {target}（core|world|extra のいずれか）"
+  file-list-header: "&a[{target}] 設定ファイル一覧:"
+  file-list-entry: "&7- {file}"
+  value: "&a{file}:{path} = {value}"
+  value-not-found: "&c値が見つかりません: {file}:{path}"
+  set-success: "&a{file}:{path} を {value} に設定しました。"
+  set-failed: "&c設定に失敗しました（ファイルが登録されていません）: {file}"
+  saved: "&a{file} を保存しました。"
+  keys-header: "&a[{target}] {file} のキー一覧:"
+  keys-empty: "&eキーが見つかりません（ファイルが登録されていないか、空です）。"
+
+quest:
+  force-completed: "&a{player}のクエスト「{quest}」の目標を強制達成しました。対象プレイヤーに /ol quest でGUIから報告してもらってください。"
+  force-complete-failed: "&c強制達成できませんでした（未受注か、既に受注中でない可能性があります）。"
+
+npc:
+  list-header: "&aNPC一覧:"
+  list-entry: "&7- {id}"
+  list-empty: "&e登録されているNPCはありません。"
+
+exp:
+  invalid-amount: "&c経験値は数値で指定してください。"
+  given: "&a{player}に経験値{amount}を付与しました。"
+
+manual:
+  header: "&aOreliaDebug コマンド一覧 &7({page}/{total}ページ)"

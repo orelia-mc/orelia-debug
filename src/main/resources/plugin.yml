@@ -1,0 +1,8 @@
+name: OreliaDebug
+version: '${version}'
+main: rpg.debug.core.OreliaDebugPlugin
+api-version: '1.21'
+description: Orelia testplay/debug tooling - GUI force-open, balance edit, live config edit
+folia-supported: false
+depend: [OreliaCore]
+softdepend: [OreliaWorld, OreliaExtra, Vault]
