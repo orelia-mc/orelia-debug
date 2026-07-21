@@ -9,13 +9,12 @@ command:
   player-not-found: "&%c対象のプレイヤーが見つかりません: {player}"
 
 usage:
-  root: "&%e使い方: /oladmin debug &%7<&%egui&%7|&%emoney&%7|&%econfig&%7|&%econfighelp&%7|&%equest&%7|&%enpc&%7|&%eexp&%7|&%emanual&%7>&%e ..."
-  gui: "&%e使い方: /oladmin debug gui &%7<&%estatus&%7|&%eequipment&%7|&%eskill&%7|&%ejob&%7|&%eshop&%7|&%ewarehouse&%7|&%eauction&%7|&%email&%7|&%eranking&%7>&%e &%7<&%eplayer&%7>&%e"
-  money: "&%e使い方: /oladmin debug money &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7<&%eplayer&%7>&%e &%7<&%eamount&%7>&%e"
-  config: "&%e使い方: /oladmin debug config &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%elist&%7|&%eget &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e&%7|&%eset &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e &%7<&%evalue&%7>&%e&%7|&%esave &%7<&%efile&%7>&%e&%7>&%e"
-  confighelp: "&%e使い方: /oladmin debug confighelp &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%efile&%7>&%e"
-  quest: "&%e使い方: /oladmin debug quest complete &%7<&%eplayer&%7>&%e &%7<&%equestId&%7>&%e"
-  exp: "&%e使い方: /oladmin debug exp give &%7<&%eplayer&%7>&%e &%7<&%eamount&%7>&%e"
+  gui: "&%e使い方: /oladmin gui &%7<&%estatus&%7|&%eequipment&%7|&%eskill&%7|&%ejob&%7|&%eshop&%7|&%ewarehouse&%7|&%eauction&%7|&%email&%7|&%eranking&%7>&%e &%7[&%eplayer&%7]&%e"
+  money: "&%e使い方: /oladmin money &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
+  config: "&%e使い方: /oladmin config &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%elist&%7|&%eget &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e&%7|&%eset &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e &%7<&%evalue&%7>&%e&%7|&%esave &%7<&%efile&%7>&%e&%7>&%e"
+  confighelp: "&%e使い方: /oladmin confighelp &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%efile&%7>&%e"
+  quest: "&%e使い方: /oladmin quest complete &%7[&%eplayer&%7]&%e &%7<&%equestId&%7>&%e"
+  exp: "&%e使い方: /oladmin exp give &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
 
 gui:
   opened: "&%a{player}に{screen}画面を表示しました。"
@@ -46,14 +45,6 @@ quest:
   force-completed: "&%a{player}のクエスト「{quest}」の目標を強制達成しました。対象プレイヤーに /ol quest でGUIから報告してもらってください。"
   force-complete-failed: "&%c強制達成できませんでした（未受注か、既に受注中でない可能性があります）。"
 
-npc:
-  list-header: "&%aNPC一覧:"
-  list-entry: "&%7- {id}"
-  list-empty: "&%e登録されているNPCはありません。"
-
 exp:
   invalid-amount: "&%c経験値は数値で指定してください。"
   given: "&%a{player}に経験値{amount}を付与しました。"
-
-manual:
-  header: "&%aOreliaDebug コマンド一覧 &%7({page}/{total}ページ)"

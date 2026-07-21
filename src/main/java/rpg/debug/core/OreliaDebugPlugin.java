@@ -9,7 +9,13 @@ import rpg.api.StatusApi;
 import rpg.core.command.AdminCommandRegistry;
 import rpg.core.config.ConfigManager;
 import rpg.core.message.MessageManager;
-import rpg.debug.command.DebugAdminCommand;
+import rpg.debug.command.ConfigDebugCommand;
+import rpg.debug.command.ConfigHelpDebugCommand;
+import rpg.debug.command.ExpDebugCommand;
+import rpg.debug.command.GuiDebugCommand;
+import rpg.debug.command.ManualCommand;
+import rpg.debug.command.MoneyDebugCommand;
+import rpg.debug.command.QuestDebugCommand;
 import rpg.extra.api.ExtraDebugApi;
 import rpg.world.api.WorldDebugApi;
 
@@ -58,11 +64,25 @@ public final class OreliaDebugPlugin extends JavaPlugin {
         this.configManager = new ConfigManager(this);
         this.messageManager = new MessageManager(configManager.register("messages.yml"));
 
-        DebugAdminCommand debugAdminCommand = new DebugAdminCommand(
-                messageManager, debugApi, guiApi, economyApi, statusApi, worldDebugApi, extraDebugApi);
-        adminCommandRegistration.getProvider().register("debug", debugAdminCommand,
-                "テストプレイ支援コマンド（GUI強制表示・所持金操作・config編集など）。",
-                "debug <gui|money|config|confighelp|quest|npc|manual> ...");
+        AdminCommandRegistry adminCommandRegistry = adminCommandRegistration.getProvider();
+        adminCommandRegistry.register("gui", new GuiDebugCommand(messageManager, guiApi, extraDebugApi),
+                "指定プレイヤー(省略時は自分)に各種GUIを強制表示します。",
+                "gui <status|equipment|skill|job|shop|warehouse|auction|mail|ranking> [player]");
+        adminCommandRegistry.register("money", new MoneyDebugCommand(messageManager, economyApi),
+                "指定プレイヤー(省略時は自分)の所持金を付与・設定・引き出しします。",
+                "money <give|set|take> [player] <amount>");
+        adminCommandRegistry.register("config", new ConfigDebugCommand(messageManager, debugApi, worldDebugApi, extraDebugApi),
+                "各プラグインの設定ファイルを確認・編集します。",
+                "config <core|world|extra> <list|get <file> <path>|set <file> <path> <value>|save <file>>");
+        adminCommandRegistry.register("confighelp", new ConfigHelpDebugCommand(messageManager, debugApi, worldDebugApi, extraDebugApi),
+                "設定ファイルの全キー一覧を表示します。", "confighelp <core|world|extra> <file>");
+        adminCommandRegistry.register("quest", new QuestDebugCommand(messageManager, worldDebugApi),
+                "指定プレイヤー(省略時は自分)のクエストの目標を強制達成します（要OreliaWorld）。",
+                "quest complete [player] <questId>");
+        adminCommandRegistry.register("exp", new ExpDebugCommand(messageManager, statusApi),
+                "指定プレイヤー(省略時は自分)に経験値を付与します。", "exp give [player] <amount>");
+        adminCommandRegistry.register("manual", new ManualCommand(),
+                "OreliaDebugのコマンド一覧を表示します。", "manual [page]");
 
         getLogger().info("OreliaDebug enabled" + (worldDebugApi == null ? " (OreliaWorld not detected)" : "")
                 + (extraDebugApi == null ? " (OreliaExtra not detected)" : "") + ".");
