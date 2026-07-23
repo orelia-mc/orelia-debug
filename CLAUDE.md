@@ -40,26 +40,29 @@ flags it) — don't remove it unprompted, but don't be surprised it's there.
 ## Architecture
 
 - **`OreliaDebugPlugin`** (`core/`) — `onEnable` entry point. Fetches `AdminCommandRegistry`
-  from OreliaCore's `ServicesManager` and registers a single `debug` subcommand handler
-  under it (not a standalone Bukkit command — `/oladmin` itself belongs to orelia-core).
-  Also loads the core/world/extra APIs and constructs `ConfigManager`/`MessageManager`
-  (both reused from `rpg.core.*`, same as orelia-world/orelia-extra do).
-- **`DebugAdminCommand`** (`command/`) — the single `CommandExecutor`/`TabCompleter` for
-  every `/oladmin debug <subcommand>`. All subcommands (`gui`, `money`, `config`,
-  `confighelp`, `quest`, `npc`, `exp`, `manual`) are dispatched from one class; each private
-  handler method follows the same shape: validate arg count → resolve target player (if any)
-  → call into the relevant `rpg.api`/`rpg.world.api`/`rpg.extra.api` interface → send a
-  `messages.yml`-keyed response. `worldDebugApi`/`extraDebugApi` are checked for `null` at
-  the top of any branch that needs them.
-- **`DebugManual`** (`command/`) — renders `/oladmin debug manual [page]`, a paginated
-  in-game mirror of README.md's command list. Keep this list in sync with README.md and
-  `messages.yml`'s `usage.*` keys when subcommands change.
+  from OreliaCore's `ServicesManager` and registers each debug subcommand as its own flat
+  entry directly under it (not standalone Bukkit commands — `/oladmin` itself belongs to
+  orelia-core). Also loads the core/world/extra APIs and constructs `ConfigManager`/
+  `MessageManager` (both reused from `rpg.core.*`, same as orelia-world/orelia-extra do).
+- **`command/`** — one small `CommandExecutor`/`TabCompleter` class per subcommand
+  (`GuiDebugCommand`, `MoneyDebugCommand`, `SkillPointsDebugCommand`, `ExpDebugCommand`,
+  `ConfigDebugCommand`, `ConfigHelpDebugCommand`, `QuestDebugCommand`, `ManualCommand`) —
+  registered flat under `/oladmin <name>` (e.g. `/oladmin money`), not nested under a
+  `debug` subcommand. Each follows the same shape: validate arg count → resolve target
+  player (defaulting to the sender when omitted, for the ones that take a target) → call
+  into the relevant `rpg.api`/`rpg.world.api`/`rpg.extra.api` interface → send a
+  `messages.yml`-keyed response. Commands needing `worldDebugApi`/`extraDebugApi` null-guard
+  and report "not installed" rather than throwing (soft dependencies).
+- **`DebugManual`** (`command/`) — renders `/oladmin manual [page]`, a clickable-pagination
+  in-game mirror of README.md's command list (via orelia-core's `Pagination`). Keep this
+  list in sync with README.md and `messages.yml`'s `usage.*` keys when subcommands change.
 - **`messages.yml`** — every user-facing string is a key here, sent through
   `MessageManager`. Do not hardcode `ChatColor` + literal strings in command code; add a
   key instead (this convention is stated directly in the resource file's header comment).
 
 ### Adding a new debug subcommand
 
-Touch, in order: `DebugAdminCommand` (dispatch in `onCommand`, tab-completion in
-`onTabComplete`, a new private handler), `messages.yml` (usage + result keys), `DebugManual`
-(new `Entry`), and `README.md` (command reference section).
+Touch, in order: a new `command/XyzDebugCommand.java` (mirror `MoneyDebugCommand`'s shape),
+`OreliaDebugPlugin` (load any new API service, register the command under
+`AdminCommandRegistry`), `messages.yml` (usage + result keys), `DebugManual` (new `Entry`),
+and `README.md` (command reference section).

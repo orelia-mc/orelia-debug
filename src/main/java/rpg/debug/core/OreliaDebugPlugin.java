@@ -5,6 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import rpg.api.DebugApi;
 import rpg.api.EconomyApi;
 import rpg.api.GuiApi;
+import rpg.api.SkillApi;
 import rpg.api.StatusApi;
 import rpg.core.command.AdminCommandRegistry;
 import rpg.core.config.ConfigManager;
@@ -16,6 +17,7 @@ import rpg.debug.command.GuiDebugCommand;
 import rpg.debug.command.ManualCommand;
 import rpg.debug.command.MoneyDebugCommand;
 import rpg.debug.command.QuestDebugCommand;
+import rpg.debug.command.SkillPointsDebugCommand;
 import rpg.extra.api.ExtraDebugApi;
 import rpg.world.api.WorldDebugApi;
 
@@ -50,8 +52,9 @@ public final class OreliaDebugPlugin extends JavaPlugin {
         GuiApi guiApi = getServer().getServicesManager().load(GuiApi.class);
         EconomyApi economyApi = getServer().getServicesManager().load(EconomyApi.class);
         StatusApi statusApi = getServer().getServicesManager().load(StatusApi.class);
-        if (debugApi == null || guiApi == null || economyApi == null || statusApi == null) {
-            getLogger().severe("OreliaCore's DebugApi/GuiApi/EconomyApi/StatusApi services were not found. "
+        SkillApi skillApi = getServer().getServicesManager().load(SkillApi.class);
+        if (debugApi == null || guiApi == null || economyApi == null || statusApi == null || skillApi == null) {
+            getLogger().severe("OreliaCore's DebugApi/GuiApi/EconomyApi/StatusApi/SkillApi services were not found. "
                     + "Is OreliaCore installed and enabled before OreliaDebug?");
             getServer().getPluginManager().disablePlugin(this);
             return;
@@ -81,6 +84,9 @@ public final class OreliaDebugPlugin extends JavaPlugin {
                 "quest complete [player] <questId>");
         adminCommandRegistry.register("exp", new ExpDebugCommand(messageManager, statusApi),
                 "指定プレイヤー(省略時は自分)に経験値を付与します。", "exp give [player] <amount>");
+        adminCommandRegistry.register("skillpoints", new SkillPointsDebugCommand(messageManager, skillApi),
+                "指定プレイヤー(省略時は自分)のスキル習得ポイントを付与・設定・引き出しします。",
+                "skillpoints <give|set|take> [player] <amount>");
         adminCommandRegistry.register("manual", new ManualCommand(),
                 "OreliaDebugのコマンド一覧を表示します。", "manual [page]");
 

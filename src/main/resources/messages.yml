@@ -15,6 +15,7 @@ usage:
   confighelp: "&%e使い方: /oladmin confighelp &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%efile&%7>&%e"
   quest: "&%e使い方: /oladmin quest complete &%7[&%eplayer&%7]&%e &%7<&%equestId&%7>&%e"
   exp: "&%e使い方: /oladmin exp give &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
+  skillpoints: "&%e使い方: /oladmin skillpoints &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
 
 gui:
   opened: "&%a{player}に{screen}画面を表示しました。"
@@ -27,6 +28,13 @@ money:
   given: "&%a{player}に{amount}を付与しました。（残高: {balance}）"
   set: "&%a{player}の所持金を{amount}に設定しました。"
   taken: "&%a{player}から{amount}を引き出しました。（残高: {balance}）"
+  take-failed: "&%c残高が不足しているため引き出せませんでした。"
+
+skillpoints:
+  invalid-amount: "&%c数量は整数で指定してください。"
+  given: "&%a{player}にスキル習得ポイントを{amount}付与しました。（残高: {balance}）"
+  set: "&%a{player}のスキル習得ポイントを{amount}に設定しました。"
+  taken: "&%a{player}からスキル習得ポイントを{amount}引き出しました。（残高: {balance}）"
   take-failed: "&%c残高が不足しているため引き出せませんでした。"
 
 config:
