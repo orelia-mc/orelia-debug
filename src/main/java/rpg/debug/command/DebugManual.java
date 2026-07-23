@@ -24,6 +24,8 @@ final class DebugManual {
                     "指定プレイヤー(省略時は自分)に各種GUIを強制表示します。auction/mail/rankingはOreliaExtra導入時のみ使用可能です。"),
             new Entry("oladmin money <give|set|take> [player] <amount>",
                     "指定プレイヤー(省略時は自分)の所持金を付与・設定・引き出しします。"),
+            new Entry("oladmin skillpoints <give|set|take> [player] <amount>",
+                    "指定プレイヤー(省略時は自分)のスキル習得ポイントを付与・設定・引き出しします。"),
             new Entry("oladmin exp give [player] <amount>",
                     "指定プレイヤー(省略時は自分)に経験値を付与します。"),
             new Entry("oladmin config <core|world|extra> list",
