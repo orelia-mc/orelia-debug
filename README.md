@@ -99,6 +99,24 @@ NPCの一覧・設置・移動・削除は`orelia-debug`ではなく`orelia-worl
 - `equip`: 称号を強制装備させます。`/ol title equip`と違い未取得の称号でも装備できるので、称号の表示を`grant`せずにプレビューしたい場合に使えます。
 - `unequip`: 称号を解除します。
 
+### ダンジョン関連（要OreliaWorld）
+
+```
+/oladmin dungeon unlock [player] <dungeonId>
+/oladmin dungeon forcestart [player] <dungeonId>
+/oladmin dungeon forceend [player]
+/oladmin dungeon status [player]
+/oladmin dungeon ids
+```
+
+- `unlock`: 開放トリガーブロックのクリックを経由せず、指定プレイヤー(省略時は自分)にダンジョンを直接開放させます。
+- `forcestart`: 開放チェックを無視して、指定プレイヤー(省略時は自分)をソロでダンジョンに強制突入させます（`min-party-size`が2以上のダンジョンは失敗する場合があります）。
+- `forceend`: 指定プレイヤー(省略時は自分)が挑戦中のダンジョンを強制終了(リタイア扱い、報酬無し)します。テストプレイで詰まったセッションの掃除に使えます。
+- `status`: 指定プレイヤー(省略時は自分)が現在挑戦中のダンジョンIDを表示します。
+- `ids`: `dungeons.yml`に定義されている全ダンジョンIDを一覧表示します。
+
+開放トリガーブロックの設置・解除・一覧は`orelia-debug`ではなく`orelia-world`本体の`/oladmin dungeonblock set|remove|list`コマンドで行います。
+
 ### マニュアル
 
 ```
