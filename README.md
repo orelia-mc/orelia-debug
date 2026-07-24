@@ -83,6 +83,10 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 
 このREADMEの内容をゲーム内でクリック可能なページ送り表示します。
 
+## config/messagesの自動移行・バージョン管理
+
+`messages.yml`は先頭の`config-version`で管理されており、新しいjarで起動すると新規追加されたキー(既存セクション内部のネストしたキーも含む)は既存ファイルの正しい位置へ自動で追記されます(orelia-coreの`ConfigMigrator`をjitpack経由で共有)。新しいキーを追加したら`config-version`を1つ上げてください。`main`へのpush(=PRマージ)ごとに`.github/workflows/version-bump.yml`が`build.gradle.kts`の`version`を自動でPATCHインクリメントし、タグを打ちます。互換性が壊れる変更は`bump:minor`、大規模な改修は`bump:major`ラベルをPRに付けてからマージしてください。
+
 ## 開発時の注意（mavenLocal依存）
 
 `build.gradle.kts` の `repositories` に一時的に `mavenLocal()` を追加しています。orelia-core/orelia-world/orelia-extraを並行して変更している間は、それぞれのリポジトリで `./gradlew publishToMavenLocal` を実行してから本プラグインをビルドしてください。本番リリース前にはこの行を削除し、jitpack経由の解決のみに戻す想定です。
