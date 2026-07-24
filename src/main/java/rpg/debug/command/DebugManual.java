@@ -54,6 +54,14 @@ final class DebugManual {
                     "指定プレイヤー(省略時は自分)に称号を強制装備させます。未取得の称号でも装備できます（表示プレビュー用、要OreliaWorld）。"),
             new Entry("oladmin title unequip [player]",
                     "指定プレイヤー(省略時は自分)の称号を解除します（要OreliaWorld）。"),
+            new Entry("oladmin dungeon unlock [player] <dungeonId>",
+                    "指定プレイヤー(省略時は自分)にダンジョンを開放させます（要OreliaWorld）。"),
+            new Entry("oladmin dungeon forcestart [player] <dungeonId>",
+                    "開放チェックを無視して、指定プレイヤー(省略時は自分)にダンジョンをソロで強制開始させます（要OreliaWorld）。"),
+            new Entry("oladmin dungeon forceend [player]",
+                    "指定プレイヤー(省略時は自分)が挑戦中のダンジョンを強制終了します（要OreliaWorld）。"),
+            new Entry("oladmin dungeon status [player]|ids",
+                    "指定プレイヤー(省略時は自分)の現在のダンジョン挑戦状況、またはdungeons.ymlの全ダンジョンIDを表示します（要OreliaWorld）。"),
             new Entry("oladmin npc create <id> <type> [entityType]|move <id>|remove <id>|list [page]",
                     "NPCの設置・移動・削除を行うコマンドです（OreliaWorld本体）。")
     );

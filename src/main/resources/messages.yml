@@ -16,6 +16,7 @@ usage:
   confighelp: "&%e使い方: /oladmin confighelp &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%efile&%7>&%e"
   quest: "&%e使い方: /oladmin quest &%7<&%ecomplete&%7|&%estart&%7|&%eresetcooldown&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%equestId&%7>&%e&%7|&%elist &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
   title: "&%e使い方: /oladmin title &%7<&%elist&%7|&%eunequip&%7>&%e &%7[&%eplayer&%7]&%e&%7|&%e&%7<&%egrant&%7|&%eequip&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%etitle&%7>&%e"
+  dungeon: "&%e使い方: /oladmin dungeon &%7<&%eunlock&%7|&%eforcestart&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%edungeonId&%7>&%e&%7|&%eforceend&%7|&%estatus&%7>&%e &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
   exp: "&%e使い方: /oladmin exp give &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   skillpoints: "&%e使い方: /oladmin skillpoints &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
 
@@ -75,6 +76,18 @@ title:
   equip-failed: "&%c称号を装備できませんでした（対象プレイヤーのデータが見つかりません）。"
   unequipped: "&%a{player}の称号を解除しました。"
   unequip-failed: "&%c称号を解除できませんでした（対象プレイヤーのデータが見つかりません）。"
+
+dungeon:
+  unlocked: "&%a{player}にダンジョン「{dungeon}」を開放しました。"
+  unlock-failed: "&%c開放できませんでした（対象プレイヤーのデータが見つからないか、不明なダンジョンです）。"
+  force-started: "&%a{player}にダンジョン「{dungeon}」を強制開始させました。"
+  force-start-failed: "&%c強制開始できませんでした（{reason}）。"
+  force-ended: "&%a{player}のダンジョンを強制終了しました。"
+  force-end-failed: "&%c強制終了できませんでした（ダンジョンに挑戦していない可能性があります）。"
+  status-active: "&%a{player}は現在ダンジョン「{dungeon}」に挑戦中です。"
+  status-idle: "&%e{player}は現在ダンジョンに挑戦していません。"
+  ids-header: "&%adungeons.ymlに定義されている全ダンジョンID:"
+  ids-entry: "&%7- {dungeon}"
 
 exp:
   invalid-amount: "&%c経験値は数値で指定してください。"
