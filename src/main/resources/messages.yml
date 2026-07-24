@@ -14,7 +14,8 @@ usage:
   money: "&%e使い方: /oladmin money &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   config: "&%e使い方: /oladmin config &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%elist&%7|&%eget &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e&%7|&%eset &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e &%7<&%evalue&%7>&%e&%7|&%esave &%7<&%efile&%7>&%e&%7>&%e"
   confighelp: "&%e使い方: /oladmin confighelp &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%efile&%7>&%e"
-  quest: "&%e使い方: /oladmin quest complete &%7[&%eplayer&%7]&%e &%7<&%equestId&%7>&%e"
+  quest: "&%e使い方: /oladmin quest &%7<&%ecomplete&%7|&%estart&%7|&%eresetcooldown&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%equestId&%7>&%e&%7|&%elist &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
+  title: "&%e使い方: /oladmin title &%7<&%elist&%7|&%eunequip&%7>&%e &%7[&%eplayer&%7]&%e&%7|&%e&%7<&%egrant&%7|&%eequip&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%etitle&%7>&%e"
   exp: "&%e使い方: /oladmin exp give &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   skillpoints: "&%e使い方: /oladmin skillpoints &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
 
@@ -53,6 +54,27 @@ config:
 quest:
   force-completed: "&%a{player}のクエスト「{quest}」の目標を強制達成しました。対象プレイヤーに /ol quest でGUIから報告してもらってください。"
   force-complete-failed: "&%c強制達成できませんでした（未受注か、既に受注中でない可能性があります）。"
+  force-started: "&%a{player}にクエスト「{quest}」を強制受注させました（前提条件・レベル制限は無視されます）。"
+  force-start-failed: "&%c強制受注できませんでした（存在しないクエストか、既に受注中の可能性があります）。"
+  cooldown-reset: "&%a{player}のクエスト「{quest}」の完了記録をクリアしました。即座に再受注できます。"
+  cooldown-reset-failed: "&%c完了記録をクリアできませんでした（一度も完了していない可能性があります）。"
+  list-header: "&%a{player}の受注中クエスト:"
+  list-entry: "&%7- {quest}"
+  list-empty: "&%e{player}は現在クエストを受注していません。"
+  ids-header: "&%aquests.ymlに定義されている全クエストID:"
+  ids-entry: "&%7- {quest}"
+
+title:
+  list-header: "&%a{player}の取得済み称号:"
+  list-entry: "&%7- {title}"
+  list-entry-equipped: "&%a- {title} &%7(装備中)"
+  list-empty: "&%e{player}はまだ称号を取得していません。"
+  granted: "&%a{player}に称号「{title}」を付与しました。"
+  grant-failed: "&%c称号を付与できませんでした（対象プレイヤーのデータが見つかりません）。"
+  equipped: "&%a{player}に称号「{title}」を強制装備させました（未取得でも装備されます）。"
+  equip-failed: "&%c称号を装備できませんでした（対象プレイヤーのデータが見つかりません）。"
+  unequipped: "&%a{player}の称号を解除しました。"
+  unequip-failed: "&%c称号を解除できませんでした（対象プレイヤーのデータが見つかりません）。"
 
 exp:
   invalid-amount: "&%c経験値は数値で指定してください。"

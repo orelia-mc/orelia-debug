@@ -71,9 +71,33 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 
 ```
 /oladmin quest complete [player] <questId>
+/oladmin quest start [player] <questId>
+/oladmin quest resetcooldown [player] <questId>
+/oladmin quest list [player]
+/oladmin quest ids
 ```
 
-受注中のクエストの全目標を強制的に達成状態にします（`AWAITING_REPORT` へ遷移）。報酬付与そのものは対象プレイヤーが `/ol quest` からNPCへ報告して受け取る必要があります。NPCの一覧・設置・移動・削除は`orelia-debug`ではなく`orelia-world`本体の`/oladmin npc create|move|remove|list`コマンドで行います。
+- `complete`: 受注中のクエストの全目標を強制的に達成状態にします（`AWAITING_REPORT` へ遷移）。報酬付与そのものは対象プレイヤーが `/ol quest` からNPCへ報告して受け取る必要があります。
+- `start`: 前提条件・レベル制限を無視してクエストを強制受注させます。
+- `resetcooldown`: クエストの完了記録をクリアし、リピート可能クエストの`cooldown-hours`を待たずに即座に再受注できるようにします（一度も完了していないクエストの通常受注制限には影響しません）。
+- `list`: 指定プレイヤー(省略時は自分)が現在受注中のクエストID一覧を表示します。
+- `ids`: `quests.yml`に定義されている全クエストIDを一覧表示します（`questId`引数のタブ補完にも使われます）。
+
+NPCの一覧・設置・移動・削除は`orelia-debug`ではなく`orelia-world`本体の`/oladmin npc create|move|remove|list`コマンドで行います。
+
+### 称号関連（要OreliaWorld）
+
+```
+/oladmin title list [player]
+/oladmin title grant [player] <title>
+/oladmin title equip [player] <title>
+/oladmin title unequip [player]
+```
+
+- `list`: 指定プレイヤー(省略時は自分)の取得済み称号と、現在装備中の称号を表示します。
+- `grant`: クエスト報酬(`reward.title`)を経由せず、称号を直接付与します。
+- `equip`: 称号を強制装備させます。`/ol title equip`と違い未取得の称号でも装備できるので、称号の表示を`grant`せずにプレビューしたい場合に使えます。
+- `unequip`: 称号を解除します。
 
 ### マニュアル
 
