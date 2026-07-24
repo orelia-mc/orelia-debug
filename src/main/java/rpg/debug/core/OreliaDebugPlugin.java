@@ -18,7 +18,9 @@ import rpg.debug.command.ManualCommand;
 import rpg.debug.command.MoneyDebugCommand;
 import rpg.debug.command.QuestDebugCommand;
 import rpg.debug.command.SkillPointsDebugCommand;
+import rpg.debug.command.TitleDebugCommand;
 import rpg.extra.api.ExtraDebugApi;
+import rpg.world.api.QuestApi;
 import rpg.world.api.WorldDebugApi;
 
 /**
@@ -62,6 +64,7 @@ public final class OreliaDebugPlugin extends JavaPlugin {
 
         // Soft dependencies - null means that plugin simply isn't installed.
         WorldDebugApi worldDebugApi = getServer().getServicesManager().load(WorldDebugApi.class);
+        QuestApi questApi = getServer().getServicesManager().load(QuestApi.class);
         ExtraDebugApi extraDebugApi = getServer().getServicesManager().load(ExtraDebugApi.class);
 
         this.configManager = new ConfigManager(this);
@@ -79,9 +82,12 @@ public final class OreliaDebugPlugin extends JavaPlugin {
                 "config <core|world|extra> <list|get <file> <path>|set <file> <path> <value>|save <file>>");
         adminCommandRegistry.register("confighelp", new ConfigHelpDebugCommand(messageManager, debugApi, worldDebugApi, extraDebugApi),
                 "設定ファイルの全キー一覧を表示します。", "confighelp <core|world|extra> <file>");
-        adminCommandRegistry.register("quest", new QuestDebugCommand(messageManager, worldDebugApi),
-                "指定プレイヤー(省略時は自分)のクエストの目標を強制達成します（要OreliaWorld）。",
-                "quest complete [player] <questId>");
+        adminCommandRegistry.register("quest", new QuestDebugCommand(messageManager, worldDebugApi, questApi),
+                "指定プレイヤー(省略時は自分)のクエストを強制受注・達成・クールダウンリセットします（要OreliaWorld）。",
+                "quest <complete|start|resetcooldown> [player] <questId>|list [player]|ids");
+        adminCommandRegistry.register("title", new TitleDebugCommand(messageManager, worldDebugApi, questApi),
+                "指定プレイヤー(省略時は自分)の称号を確認・付与・装備・解除します（要OreliaWorld）。",
+                "title list [player]|grant [player] <title>|equip [player] <title>|unequip [player]");
         adminCommandRegistry.register("exp", new ExpDebugCommand(messageManager, statusApi),
                 "指定プレイヤー(省略時は自分)に経験値を付与します。", "exp give [player] <amount>");
         adminCommandRegistry.register("skillpoints", new SkillPointsDebugCommand(messageManager, skillApi),
