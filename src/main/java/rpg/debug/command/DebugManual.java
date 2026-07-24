@@ -26,6 +26,8 @@ final class DebugManual {
                     "指定プレイヤー(省略時は自分)の所持金を付与・設定・引き出しします。"),
             new Entry("oladmin skillpoints <give|set|take> [player] <amount>",
                     "指定プレイヤー(省略時は自分)のスキル習得ポイントを付与・設定・引き出しします。"),
+            new Entry("oladmin debugmode <on|off|toggle> [player]",
+                    "指定プレイヤー(省略時は自分)のデバッグモードを切り替えます。有効な間は武器の職業/レベル要件、スキルの武器種一致・ソケット済み・習得済み・クールダウン・SPコストを全て無視して使用できます。"),
             new Entry("oladmin exp give [player] <amount>",
                     "指定プレイヤー(省略時は自分)に経験値を付与します。"),
             new Entry("oladmin config <core|world|extra> list",
