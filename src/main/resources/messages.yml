@@ -1,6 +1,7 @@
 # Centralized user-facing text for orelia-debug's /oladmin debug tooling. Every chat
 # message goes through rpg.core.message.MessageManager (reused from orelia-core) - do not
 # hardcode ChatColor + literal strings in command code, add a key here instead.
+config-version: 1
 
 prefix: "&%8[&%6OreliaDebug&%8] &r"
 
