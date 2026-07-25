@@ -30,6 +30,8 @@ final class DebugManual {
                     "指定プレイヤー(省略時は自分)のデバッグモードを切り替えます。有効な間は武器の職業/レベル要件、スキルの武器種一致・ソケット済み・習得済み・クールダウン・SPコストを全て無視して使用できます。"),
             new Entry("oladmin exp give [player] <amount>",
                     "指定プレイヤー(省略時は自分)に経験値を付与します。"),
+            new Entry("oladmin relic give [player] <dungeonId>",
+                    "指定プレイヤー(省略時は自分)にレリックを1個付与します（relics.ymlのそのダンジョンIDのプールから抽選）。"),
             new Entry("oladmin config <core|world|extra> list",
                     "対象プラグインの設定ファイル一覧を表示します。"),
             new Entry("oladmin config <core|world|extra> get <file> <path>",

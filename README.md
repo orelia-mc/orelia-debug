@@ -55,6 +55,14 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 /oladmin exp give [player] <amount>
 ```
 
+### レリック付与
+
+```
+/oladmin relic give [player] <dungeonId>
+```
+
+指定プレイヤー（省略時は自分）に、`relics.yml`の`<dungeonId>`用プールから抽選したレリックを1個付与します。`RelicApi#generateRelic`をそのまま呼ぶだけなので、ボスドロップと同じ抽選ロジックです。プールが設定されていない場合は失敗します。
+
 ### デバッグモード
 
 ```

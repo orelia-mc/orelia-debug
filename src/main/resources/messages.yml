@@ -19,6 +19,7 @@ usage:
   dungeon: "&%e使い方: /oladmin dungeon &%7<&%eunlock&%7|&%eforcestart&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%edungeonId&%7>&%e&%7|&%eforceend&%7|&%estatus&%7>&%e &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
   exp: "&%e使い方: /oladmin exp give &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   skillpoints: "&%e使い方: /oladmin skillpoints &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
+  relic: "&%e使い方: /oladmin relic give &%7[&%eplayer&%7]&%e &%7<&%edungeonId&%7>&%e"
   debugmode: "&%e使い方: /oladmin debugmode &%7<&%eon&%7|&%eoff&%7|&%etoggle&%7>&%e &%7[&%eplayer&%7]&%e"
   pet: "&%e使い方: /oladmin pet &%7<&%eunlock&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%epetId&%7>&%e&%7|&%elist &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
   mount: "&%e使い方: /oladmin mount &%7<&%eunlock&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%emountId&%7>&%e&%7|&%elist &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
@@ -136,3 +137,7 @@ trade:
 exp:
   invalid-amount: "&%c経験値は数値で指定してください。"
   given: "&%a{player}に経験値{amount}を付与しました。"
+
+relic:
+  given: "&%a{player}にダンジョン「{dungeon}」のレリックを1個付与しました。"
+  give-failed: "&%c付与できませんでした（relics.ymlにパーツ/プールが設定されていません）。"
