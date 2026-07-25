@@ -65,7 +65,15 @@ final class DebugManual {
             new Entry("oladmin dungeon status [player]|ids",
                     "指定プレイヤー(省略時は自分)の現在のダンジョン挑戦状況、またはdungeons.ymlの全ダンジョンIDを表示します（要OreliaWorld）。"),
             new Entry("oladmin npc create <id> <type> [entityType]|move <id>|remove <id>|list [page]",
-                    "NPCの設置・移動・削除を行うコマンドです（OreliaWorld本体）。")
+                    "NPCの設置・移動・削除を行うコマンドです（OreliaWorld本体）。"),
+            new Entry("oladmin pet unlock [player] <petId>|list [player]|ids",
+                    "指定プレイヤー(省略時は自分)に経済チェック無しでペットを付与、所持ペット一覧、またはpets.ymlの全ペットIDを表示します（要OreliaExtra）。"),
+            new Entry("oladmin mount unlock [player] <mountId>|list [player]|ids",
+                    "指定プレイヤー(省略時は自分)に経済チェック無しでマウントを付与、所持マウント一覧、またはmounts.ymlの全マウントIDを表示します（要OreliaExtra）。"),
+            new Entry("oladmin house grant [player] <plotId>|clear [player]|status [player]|ids",
+                    "指定プレイヤー(省略時は自分)に経済チェック無しで住居プロットを付与・解除、所持状況、またはhousing.ymlの全プロットIDを表示します（要OreliaExtra）。"),
+            new Entry("oladmin trade status [player]|forcecancel [player]",
+                    "指定プレイヤー(省略時は自分)の取引状況を確認、または詰まった取引を強制キャンセル(アイテム返却)します（要OreliaExtra）。")
     );
 
     private DebugManual() {
