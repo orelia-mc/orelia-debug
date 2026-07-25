@@ -12,6 +12,7 @@ import rpg.core.config.ConfigManager;
 import rpg.core.message.MessageManager;
 import rpg.debug.command.ConfigDebugCommand;
 import rpg.debug.command.ConfigHelpDebugCommand;
+import rpg.debug.command.DebugModeCommand;
 import rpg.debug.command.DungeonDebugCommand;
 import rpg.debug.command.ExpDebugCommand;
 import rpg.debug.command.GuiDebugCommand;
@@ -92,6 +93,9 @@ public final class OreliaDebugPlugin extends JavaPlugin {
         adminCommandRegistry.register("dungeon", new DungeonDebugCommand(messageManager, worldDebugApi),
                 "指定プレイヤー(省略時は自分)のダンジョン開放・強制開始・強制終了・状態確認を行います（要OreliaWorld）。",
                 "dungeon <unlock|forcestart> [player] <dungeonId>|forceend [player]|status [player]|ids");
+        adminCommandRegistry.register("debugmode", new DebugModeCommand(messageManager, debugApi),
+                "指定プレイヤー(省略時は自分)のデバッグモードを切り替えます（職業/レベル/スキル要件を無視できます）。",
+                "debugmode <on|off|toggle> [player]");
         adminCommandRegistry.register("exp", new ExpDebugCommand(messageManager, statusApi),
                 "指定プレイヤー(省略時は自分)に経験値を付与します。", "exp give [player] <amount>");
         adminCommandRegistry.register("skillpoints", new SkillPointsDebugCommand(messageManager, skillApi),
