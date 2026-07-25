@@ -130,6 +130,33 @@ NPCの一覧・設置・移動・削除は`orelia-debug`ではなく`orelia-worl
 
 開放トリガーブロックの設置・解除・一覧は`orelia-debug`ではなく`orelia-world`本体の`/oladmin dungeonblock set|remove|list`コマンドで行います。
 
+### ペット/マウント/住居/取引関連（要OreliaExtra）
+
+```
+/oladmin pet unlock [player] <petId>
+/oladmin pet list [player]
+/oladmin pet ids
+/oladmin mount unlock [player] <mountId>
+/oladmin mount list [player]
+/oladmin mount ids
+/oladmin house grant [player] <plotId>
+/oladmin house clear [player]
+/oladmin house status [player]
+/oladmin house ids
+/oladmin trade status [player]
+/oladmin trade forcecancel [player]
+```
+
+- `pet unlock`/`mount unlock`: 経済チェック(所持金)を無視して、指定プレイヤー(省略時は自分)にペット/マウントを直接付与します。
+- `pet list`/`mount list`: 指定プレイヤー(省略時は自分)の所持ペット/マウント一覧を表示します。
+- `pet ids`/`mount ids`: `pets.yml`/`mounts.yml`に定義されている全IDを一覧表示します。
+- `house grant`: 経済チェックを無視して、指定プレイヤー(省略時は自分)に住居プロットを直接付与します。
+- `house clear`: 指定プレイヤー(省略時は自分)の住居プロットを解除し、再購入できるようにします。
+- `house status`: 指定プレイヤー(省略時は自分)が所持しているプロットIDを表示します。
+- `house ids`: `housing.yml`に定義されている全プロットIDを一覧表示します。
+- `trade status`: 指定プレイヤー(省略時は自分)の取引状況(誰と取引中か)を表示します。
+- `trade forcecancel`: 詰まった取引セッションを強制キャンセルします(双方が提示していたアイテムは返却されます)。
+
 ### マニュアル
 
 ```

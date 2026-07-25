@@ -20,6 +20,10 @@ usage:
   exp: "&%e使い方: /oladmin exp give &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   skillpoints: "&%e使い方: /oladmin skillpoints &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   debugmode: "&%e使い方: /oladmin debugmode &%7<&%eon&%7|&%eoff&%7|&%etoggle&%7>&%e &%7[&%eplayer&%7]&%e"
+  pet: "&%e使い方: /oladmin pet &%7<&%eunlock&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%epetId&%7>&%e&%7|&%elist &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
+  mount: "&%e使い方: /oladmin mount &%7<&%eunlock&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%emountId&%7>&%e&%7|&%elist &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
+  house: "&%e使い方: /oladmin house &%7<&%egrant&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eplotId&%7>&%e&%7|&%eclear&%7|&%estatus&%7>&%e &%7[&%eplayer&%7]&%e&%7|&%eids&%e"
+  trade: "&%e使い方: /oladmin trade &%7<&%estatus&%7|&%eforcecancel&%7>&%e &%7[&%eplayer&%7]&%e"
 
 gui:
   opened: "&%a{player}に{screen}画面を表示しました。"
@@ -94,6 +98,40 @@ debugmode:
   enabled: "&%a{player}のデバッグモードを有効にしました。職業/レベル/スキル要件を無視できます。"
   disabled: "&%e{player}のデバッグモードを無効にしました。"
   failed: "&%c切り替えに失敗しました（{player}のデータが見つかりません。オンラインか確認してください）。"
+
+pet:
+  force-unlocked: "&%a{player}にペット「{pet}」を経済チェック無しで付与しました。"
+  force-unlock-failed: "&%c付与できませんでした（不明なペットか、既に所持している可能性があります）。"
+  list-header: "&%a{player}の所持ペット:"
+  list-entry: "&%7- {pet}"
+  list-empty: "&%e{player}はまだペットを所持していません。"
+  ids-header: "&%apets.ymlに定義されている全ペットID:"
+  ids-entry: "&%7- {pet}"
+
+mount:
+  force-unlocked: "&%a{player}にマウント「{mount}」を経済チェック無しで付与しました。"
+  force-unlock-failed: "&%c付与できませんでした（不明なマウントか、既に所持している可能性があります）。"
+  list-header: "&%a{player}の所持マウント:"
+  list-entry: "&%7- {mount}"
+  list-empty: "&%e{player}はまだマウントを所持していません。"
+  ids-header: "&%amounts.ymlに定義されている全マウントID:"
+  ids-entry: "&%7- {mount}"
+
+house:
+  force-granted: "&%a{player}に住居プロット「{plot}」を経済チェック無しで付与しました。"
+  force-grant-failed: "&%c付与できませんでした（不明なプロットか、既に埋まっているか、既に自宅を所持している可能性があります）。"
+  cleared: "&%a{player}の住居プロットを解除しました。"
+  clear-failed: "&%c解除できませんでした（{player}は自宅を所持していません）。"
+  status-owns: "&%a{player}は住居プロット「{plot}」を所持しています。"
+  status-none: "&%e{player}はまだ自宅を所持していません。"
+  ids-header: "&%ahousing.ymlに定義されている全プロットID:"
+  ids-entry: "&%7- {plot}"
+
+trade:
+  status-active: "&%a{player}は現在{other}と取引中です。"
+  status-none: "&%e{player}は現在取引していません。"
+  force-cancelled: "&%a{player}の取引を強制キャンセルしました（双方に提示していたアイテムは返却されます）。"
+  force-cancel-failed: "&%c強制キャンセルできませんでした（{player}は取引していません）。"
 
 exp:
   invalid-amount: "&%c経験値は数値で指定してください。"

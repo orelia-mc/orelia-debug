@@ -16,11 +16,15 @@ import rpg.debug.command.DebugModeCommand;
 import rpg.debug.command.DungeonDebugCommand;
 import rpg.debug.command.ExpDebugCommand;
 import rpg.debug.command.GuiDebugCommand;
+import rpg.debug.command.HouseDebugCommand;
 import rpg.debug.command.ManualCommand;
 import rpg.debug.command.MoneyDebugCommand;
+import rpg.debug.command.MountDebugCommand;
+import rpg.debug.command.PetDebugCommand;
 import rpg.debug.command.QuestDebugCommand;
 import rpg.debug.command.SkillPointsDebugCommand;
 import rpg.debug.command.TitleDebugCommand;
+import rpg.debug.command.TradeDebugCommand;
 import rpg.extra.api.ExtraDebugApi;
 import rpg.world.api.QuestApi;
 import rpg.world.api.WorldDebugApi;
@@ -96,6 +100,18 @@ public final class OreliaDebugPlugin extends JavaPlugin {
         adminCommandRegistry.register("debugmode", new DebugModeCommand(messageManager, debugApi),
                 "指定プレイヤー(省略時は自分)のデバッグモードを切り替えます（職業/レベル/スキル要件を無視できます）。",
                 "debugmode <on|off|toggle> [player]");
+        adminCommandRegistry.register("pet", new PetDebugCommand(messageManager, extraDebugApi),
+                "指定プレイヤー(省略時は自分)にペットを経済チェック無しで付与します（要OreliaExtra）。",
+                "pet unlock [player] <petId>|list [player]|ids");
+        adminCommandRegistry.register("mount", new MountDebugCommand(messageManager, extraDebugApi),
+                "指定プレイヤー(省略時は自分)にマウントを経済チェック無しで付与します（要OreliaExtra）。",
+                "mount unlock [player] <mountId>|list [player]|ids");
+        adminCommandRegistry.register("house", new HouseDebugCommand(messageManager, extraDebugApi),
+                "指定プレイヤー(省略時は自分)に住居プロットを経済チェック無しで付与・解除します（要OreliaExtra）。",
+                "house grant [player] <plotId>|clear [player]|status [player]|ids");
+        adminCommandRegistry.register("trade", new TradeDebugCommand(messageManager, extraDebugApi),
+                "指定プレイヤー(省略時は自分)の取引状態を確認・強制キャンセルします（要OreliaExtra）。",
+                "trade status [player]|forcecancel [player]");
         adminCommandRegistry.register("exp", new ExpDebugCommand(messageManager, statusApi),
                 "指定プレイヤー(省略時は自分)に経験値を付与します。", "exp give [player] <amount>");
         adminCommandRegistry.register("skillpoints", new SkillPointsDebugCommand(messageManager, skillApi),
