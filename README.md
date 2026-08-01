@@ -26,10 +26,10 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 ### GUI強制表示
 
 ```
-/oladmin gui <status|equipment|skill|job|shop|warehouse|auction|mail|ranking> [player]
+/oladmin gui <status|equipment|skill|job|shop|warehouse|crafting|auction|mail|ranking|house|pet|achievement|dungeon> [player]
 ```
 
-指定したプレイヤー（省略時は自分）に対して、各種GUI画面を通常のプレイ導線（NPC接触やコマンド）を経由せず直接開きます。`shop` は在庫なしの状態で開きます。`auction` / `mail` / `ranking` はOreliaExtra導入時のみ使用できます。
+指定したプレイヤー（省略時は自分）に対して、各種GUI画面を通常のプレイ導線（NPC接触やコマンド）を経由せず直接開きます。`shop` は在庫なしの状態で開きます。`dungeon` はOreliaWorld、`auction` / `mail` / `ranking` / `house` / `pet` / `achievement` はOreliaExtra導入時のみ使用できます。
 
 ### 所持金操作
 

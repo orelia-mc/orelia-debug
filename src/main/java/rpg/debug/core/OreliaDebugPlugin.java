@@ -80,9 +80,9 @@ public final class OreliaDebugPlugin extends JavaPlugin {
         this.messageManager = new MessageManager(configManager.register("messages.yml"));
 
         AdminCommandRegistry adminCommandRegistry = adminCommandRegistration.getProvider();
-        adminCommandRegistry.register("gui", new GuiDebugCommand(messageManager, guiApi, extraDebugApi),
+        adminCommandRegistry.register("gui", new GuiDebugCommand(messageManager, guiApi, worldDebugApi, extraDebugApi),
                 "指定プレイヤー(省略時は自分)に各種GUIを強制表示します。",
-                "gui <status|equipment|skill|job|shop|warehouse|auction|mail|ranking> [player]");
+                "gui <status|equipment|skill|job|shop|warehouse|crafting|auction|mail|ranking|house|pet|achievement|dungeon> [player]");
         adminCommandRegistry.register("money", new MoneyDebugCommand(messageManager, economyApi),
                 "指定プレイヤー(省略時は自分)の所持金を付与・設定・引き出しします。",
                 "money <give|set|take> [player] <amount>");

@@ -10,7 +10,7 @@ command:
   player-not-found: "&%c対象のプレイヤーが見つかりません: {player}"
 
 usage:
-  gui: "&%e使い方: /oladmin gui &%7<&%estatus&%7|&%eequipment&%7|&%eskill&%7|&%ejob&%7|&%eshop&%7|&%ewarehouse&%7|&%eauction&%7|&%email&%7|&%eranking&%7>&%e &%7[&%eplayer&%7]&%e"
+  gui: "&%e使い方: /oladmin gui &%7<&%estatus&%7|&%eequipment&%7|&%eskill&%7|&%ejob&%7|&%eshop&%7|&%ewarehouse&%7|&%ecrafting&%7|&%eauction&%7|&%email&%7|&%eranking&%7|&%ehouse&%7|&%epet&%7|&%eachievement&%7|&%edungeon&%7>&%e &%7[&%eplayer&%7]&%e"
   money: "&%e使い方: /oladmin money &%7<&%egive&%7|&%eset&%7|&%etake&%7>&%e &%7[&%eplayer&%7]&%e &%7<&%eamount&%7>&%e"
   config: "&%e使い方: /oladmin config &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%elist&%7|&%eget &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e&%7|&%eset &%7<&%efile&%7>&%e &%7<&%epath&%7>&%e &%7<&%evalue&%7>&%e&%7|&%esave &%7<&%efile&%7>&%e&%7>&%e"
   confighelp: "&%e使い方: /oladmin confighelp &%7<&%ecore&%7|&%eworld&%7|&%eextra&%7>&%e &%7<&%efile&%7>&%e"
