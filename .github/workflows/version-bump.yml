@@ -7,6 +7,18 @@ on:
 permissions:
   contents: write
 
+# Two merges landing close together can race: both runs read the same
+# pre-bump version, one's tag push wins while its branch push loses (or vice
+# versa), leaving a tag on the remote that doesn't match what actually
+# lands on main - orelia-core hit this hard (10 merges stuck failing on
+# "tag already exists" until fixed by hand) and orelia-world hit a milder
+# case (a tag pointing at an orphaned commit). Serializing runs (not
+# cancelling in-flight ones, since each is a real version bump that must
+# land) removes the race.
+concurrency:
+  group: version-bump
+  cancel-in-progress: false
+
 jobs:
   bump:
     if: ${{ !contains(github.event.head_commit.message, '[ci-version-bump]') }}
