@@ -34,6 +34,8 @@ final class DebugManual {
                     "指定プレイヤー(省略時は自分)にレリックを1個付与します（relics.ymlのそのダンジョンIDのプールから抽選）。"),
             new Entry("oladmin config <core|world|extra> list",
                     "対象プラグインの設定ファイル一覧を表示します。"),
+            new Entry("oladmin config <core|world|extra> view <file> [path]",
+                    "設定ファイルの中身を人間が読みやすいツリー表示で確認します。各行はクリックで対応する編集コマンド(get/set)を入力欄に挿入でき、セクション行はクリックでその階層だけに絞り込めます。"),
             new Entry("oladmin config <core|world|extra> get <file> <path>",
                     "設定ファイルの値を確認します。"),
             new Entry("oladmin config <core|world|extra> set <file> <path> <value>",
