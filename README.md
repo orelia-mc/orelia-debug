@@ -26,10 +26,10 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 ### GUI強制表示
 
 ```
-/oladmin gui <status|equipment|skill|job|shop|warehouse|crafting|auction|mail|ranking|house|pet|achievement|dungeon> [player]
+/oladmin gui <status|equipment|skill|job|shop|warehouse|crafting|auction|mail|ranking|house|pet|achievement|dungeon|quest> [player]
 ```
 
-指定したプレイヤー（省略時は自分）に対して、各種GUI画面を通常のプレイ導線（NPC接触やコマンド）を経由せず直接開きます。`shop` は在庫なしの状態で開きます。`dungeon` はOreliaWorld、`auction` / `mail` / `ranking` / `house` / `pet` / `achievement` はOreliaExtra導入時のみ使用できます。
+指定したプレイヤー（省略時は自分）に対して、各種GUI画面を通常のプレイ導線（NPC接触やコマンド）を経由せず直接開きます。`shop` は在庫なしの状態で開きます。`dungeon` / `quest` はOreliaWorld、`auction` / `mail` / `ranking` / `house` / `pet` / `achievement` はOreliaExtra導入時のみ使用できます。`quest` は特定のNPCのオファーリストではなく、全クエストをカテゴリ分けした対象プレイヤーのクエストログGUIを開きます。
 
 ### 所持金操作
 
@@ -99,13 +99,18 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 /oladmin quest resetcooldown [player] <questId>
 /oladmin quest list [player]
 /oladmin quest ids
+/oladmin quest defs [page]
+/oladmin quest defs search <term>
+/oladmin quest info <questId>
 ```
 
 - `complete`: 受注中のクエストの全目標を強制的に達成状態にします（`AWAITING_REPORT` へ遷移）。報酬付与そのものは対象プレイヤーが `/ol quest` からNPCへ報告して受け取る必要があります。
 - `start`: 前提条件・レベル制限を無視してクエストを強制受注させます。
 - `resetcooldown`: クエストの完了記録をクリアし、リピート可能クエストの`cooldown-hours`を待たずに即座に再受注できるようにします（一度も完了していないクエストの通常受注制限には影響しません）。
-- `list`: 指定プレイヤー(省略時は自分)が現在受注中のクエストID一覧を表示します。
+- `list`: 指定プレイヤー(省略時は自分)が現在受注中のクエストを、目標ごとの進捗(現在値/必要値)込みで表示します。
 - `ids`: `quests.yml`に定義されている全クエストIDを一覧表示します（`questId`引数のタブ補完にも使われます）。
+- `defs`: `quests.yml`の全クエストを種別・必要レベル・名前付きで一覧表示します(各行クリックで`info`を実行)。`search <term>`でid/nameへの部分一致検索ができます。
+- `info`: 指定クエストの目標・報酬・前提クエスト・繰り返し設定などフル詳細を表示します。
 
 NPCの一覧・設置・移動・削除は`orelia-debug`ではなく`orelia-world`本体の`/oladmin npc create|move|remove|list`コマンドで行います。
 

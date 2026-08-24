@@ -28,7 +28,7 @@ public final class GuiDebugCommand implements CommandExecutor, TabCompleter {
             List.of("status", "equipment", "skill", "job", "shop", "warehouse", "crafting");
     private static final List<String> EXTRA_GUI_SCREENS =
             List.of("auction", "mail", "ranking", "house", "pet", "achievement");
-    private static final List<String> WORLD_GUI_SCREENS = List.of("dungeon");
+    private static final List<String> WORLD_GUI_SCREENS = List.of("dungeon", "quest");
 
     private final MessageManager messages;
     private final GuiApi guiApi;
@@ -73,6 +73,7 @@ public final class GuiDebugCommand implements CommandExecutor, TabCompleter {
             }
             switch (screen) {
                 case "dungeon" -> worldDebugApi.openDungeon(target);
+                case "quest" -> worldDebugApi.openQuest(target);
                 default -> throw new IllegalStateException("unreachable: " + screen);
             }
         } else if (EXTRA_GUI_SCREENS.contains(screen)) {
