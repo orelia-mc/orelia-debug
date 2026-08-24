@@ -80,6 +80,7 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 
 ```
 /oladmin config <core|world|extra> list
+/oladmin config <core|world|extra> view <file> [path]
 /oladmin config <core|world|extra> get <file> <path>
 /oladmin config <core|world|extra> set <file> <path> <value>
 /oladmin config <core|world|extra> save <file>
@@ -87,6 +88,8 @@ Orelia RPGプラグイン群（orelia-core / orelia-world / orelia-extra）の�
 ```
 
 `core` / `world` / `extra` は対象プラグインを指定します。`path` はYAMLのドット区切りパス（例: `economy.starting-balance`）。`set` の値は `true`/`false` → boolean、数値として解釈できれば long/double、それ以外は文字列として自動判定されます。`set` は即座にファイルへ保存されます。
+
+`view`は`confighelp`のフラットなdot-path羅列と違い、ファイルの構造をインデント付きツリーで表示します（`monsters.yml`のようなネストしたセクションが見やすくなります）。各末端キーはクリックで対応する`set`コマンドを（現在値付きで）チャット入力欄に挿入でき、セクション見出しはクリックでその階層だけに絞り込んだ`view`を再表示します。15行を超える場合はページ送り。
 
 ### クエスト関連（要OreliaWorld）
 
