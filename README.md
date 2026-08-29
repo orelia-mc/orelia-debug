@@ -183,7 +183,7 @@ NPCの一覧・設置・移動・削除は`orelia-debug`ではなく`orelia-worl
 
 ## config/messagesの自動移行・バージョン管理
 
-`messages.yml`は先頭の`config-version`で管理されており、新しいjarで起動すると新規追加されたキー(既存セクション内部のネストしたキーも含む)は既存ファイルの正しい位置へ自動で追記されます(orelia-coreの`ConfigMigrator`をjitpack経由で共有)。新しいキーを追加したら`config-version`を1つ上げてください。`main`へのpush(=PRマージ)ごとに`.github/workflows/version-bump.yml`が`build.gradle.kts`の`version`を自動でPATCHインクリメントし、タグを打ちます。互換性が壊れる変更は`bump:minor`、大規模な改修は`bump:major`ラベルをPRに付けてからマージしてください。
+`messages.yml`は先頭の`config-version`で管理されており、新しいjarで起動すると新規追加されたキー(既存セクション内部のネストしたキーも含む)は既存ファイルの正しい位置へ自動で追記されます(orelia-coreの`ConfigMigrator`をjitpack経由で共有)。新しいキーを追加したら`config-version`を1つ上げてください。`main`へのpush(=PRマージ)ごとに`.github/workflows/version-bump.yml`が`build.gradle.kts`の`version`を自動でPATCHインクリメントし、タグを打ちます。互換性が壊れる変更は`bump:minor`、大規模な改修は`bump:major`ラベルをPRに付けてからマージしてください。そのタグのpushを受けて`.github/workflows/release.yml`がビルドしたjarをGitHub Releaseとして自動公開します(タグごと=マージごとに1つ)。
 
 ## 開発時の注意（mavenLocal依存）
 
