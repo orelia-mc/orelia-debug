@@ -58,7 +58,11 @@ public final class GuiDebugCommand implements CommandExecutor, TabCompleter {
         if (CORE_GUI_SCREENS.contains(screen)) {
             switch (screen) {
                 case "status" -> guiApi.openStatus(target);
-                case "equipment" -> guiApi.openEquipment(target);
+                // "equipment" kept as a subcommand alias for operator muscle-memory even
+                // though the standalone equipment screen is gone; calls openStatus directly
+                // rather than the deprecated GuiApi#openEquipment redirect (slated for removal
+                // in orelia-core once no downstream build calls it - see its Javadoc).
+                case "equipment" -> guiApi.openStatus(target);
                 case "skill" -> guiApi.openSkill(target);
                 case "job" -> guiApi.openJobChange(target);
                 case "warehouse" -> guiApi.openWarehouse(target);
